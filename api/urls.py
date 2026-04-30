@@ -2,7 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 
 from .views import (ListRetrieveBook, ListCategory, ListSubCategory,
-                       CreateFeedback)
+                    CreateFeedback, ListAuthors)
 
 
 router = SimpleRouter()
@@ -15,5 +15,6 @@ urlpatterns = [
     path('v1/', include(router.urls)),
     path('v1/category/', ListCategory.as_view()),
     path('v1/subcategory/', ListSubCategory.as_view()),
-    path('v1/feedback/', CreateFeedback.as_view())
+    path('v1/feedback/', CreateFeedback.as_view()),
+    path('v1/authors/', ListAuthors.as_view()),
 ]
