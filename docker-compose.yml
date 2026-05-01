@@ -1,19 +1,14 @@
-services:
-  db:
-    image: postgres:15
-    env_file: .env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+volumes:
+  db_sqlite3:
+  images:
 
+services:
   backend:
-    build: .
+    build: ./
     env_file: .env
     volumes:
       - .:/app
+      - db_sqlite3:/data/
+      - images:/app/api/parsing_json/images/
     ports:
       - "8000:8000"
-    depends_on:
-      - db
-
-volumes:
-  postgres_data:
