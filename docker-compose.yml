@@ -1,16 +1,14 @@
-version: '3.9'
-
 volumes:
   db_sqlite3:
   images:
 
 services:
   backend:
-    build: .
+    build: ./
     env_file: .env
     volumes:
+      - .:/app
       - db_sqlite3:/data/
       - images:/app/api/parsing_json/images/
     ports:
       - "8000:8000"
-    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
